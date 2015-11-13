@@ -1,0 +1,152 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.nikitharathnakar.ebaysearch.DetailPage"
+    android:backgroundTint="@android:color/white"
+    android:backgroundTintMode="add"
+    android:background="@android:color/white"
+    android:id="@+id/detailist">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:fillViewport="true"
+        android:scrollbars = "vertical|horizontal"
+        android:nestedScrollingEnabled="true">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="1"
+        android:backgroundTint="@android:color/white"
+        android:clickable="false"
+        android:backgroundTintMode="src_over">
+
+        <ImageView
+            android:layout_width="379dp"
+            android:layout_height="186dp"
+            android:id="@+id/mainimg"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1.16" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/itemtitle"
+                android:visibility="visible"
+                android:textStyle="bold"
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/itemprice"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.03"
+                android:textStyle="bold"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/itemlocation"
+                android:layout_weight="0.04"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/topratedimg"
+                android:src="@drawable/itemtoprated"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/buynowbtn"
+
+                android:textColor="#000000"
+                android:textSize="15dp"
+
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/buynowbtn"
+                android:shadowColor="#ffa4a2a8"
+                android:shadowDx="60"
+                android:shadowDy="50"
+                android:shadowRadius="90"
+                android:ellipsize="none"
+                android:focusableInTouchMode="false"
+                android:singleLine="true"
+                android:layout_marginLeft="70dp"
+                android:textStyle="normal"
+                android:outlineProvider="paddedBounds"
+                android:layout_weight="0.09" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:id="@+id/fb_share_button"
+                android:src="@drawable/fb"
+                android:layout_marginLeft="60dp" />
+
+        </LinearLayout>
+
+        <TabHost
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@android:id/tabhost">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:baselineAligned="false"
+                    android:focusable="false" />
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:nestedScrollingEnabled="false">
+
+
+
+
+
+
+
+                </FrameLayout>
+            </LinearLayout>
+        </TabHost>
+
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,146 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Search"
+    android:id="@+id/Search"
+    android:transitionGroup="false"
+    android:clickable="true"
+    android:background="@drawable/background_search">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="eBay Search"
+        android:id="@+id/title"
+        android:textColor="#f90c2782"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/keyword_label"
+        android:layout_toEndOf="@+id/keyword_label"
+        android:layout_marginTop="57dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Keyword"
+        android:id="@+id/keyword_label"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/title"
+        android:layout_alignLeft="@+id/MinPrice_Label"
+        android:layout_alignStart="@+id/MinPrice_Label" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/keyword"
+        android:width="200dp"
+        android:inputType="none"
+        android:layout_above="@+id/MinPrice_Label"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Price From"
+        android:id="@+id/MinPrice_Label"
+        android:width="200px"
+        android:layout_below="@+id/keyword_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:layout_toStartOf="@+id/MinPrice" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/MinPrice"
+        android:width="200dp"
+        android:inputType="numberDecimal"
+        android:layout_above="@+id/MaxPrice_Label"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Price To"
+        android:id="@+id/MaxPrice_Label"
+        android:layout_below="@+id/MinPrice_Label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/MaxPrice"
+        android:inputType="numberDecimal"
+        android:width="200dp"
+        android:layout_alignBottom="@+id/MaxPrice_Label"
+        android:layout_alignLeft="@+id/MinPrice"
+        android:layout_alignStart="@+id/MinPrice" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sort By"
+        android:id="@+id/sort_label"
+        android:layout_below="@+id/MaxPrice"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sortOrder"
+        android:spinnerMode="dropdown"
+        android:layout_alignTop="@+id/sort_label"
+        android:layout_alignLeft="@+id/MaxPrice"
+        android:layout_alignStart="@+id/MaxPrice" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CLEAR"
+        android:id="@+id/clear_btn"
+        android:onClick="clear_function"
+        android:layout_below="@+id/sortOrder"
+        android:layout_alignLeft="@+id/sortOrder"
+        android:layout_alignStart="@+id/sortOrder"
+        android:background="@android:drawable/btn_default_small"
+        android:shadowColor="@android:color/darker_gray" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SEARCH"
+        android:id="@+id/search_btn"
+        android:layout_below="@+id/sortOrder"
+        android:layout_toRightOf="@+id/clear_btn"
+        android:layout_toEndOf="@+id/clear_btn"
+        android:onClick="search_function"
+        android:background="@android:drawable/btn_default" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/error_text"
+        android:textColor="#ffba081a"
+        android:singleLine="false"
+        android:layout_below="@+id/clear_btn"
+        android:layout_toRightOf="@+id/keyword_label"
+        android:layout_toEndOf="@+id/keyword_label"
+        android:editable="false"
+        android:textStyle="bold" />
+
+</RelativeLayout>

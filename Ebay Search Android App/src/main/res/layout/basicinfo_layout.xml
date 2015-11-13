@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Screen Design for Photos -->
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="138dp"
+                android:layout_height="match_parent"
+                android:text="Category Name"
+                android:textStyle="bold"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/categoryName"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="138dp"
+                android:layout_height="match_parent"
+                android:text="Condition"
+                android:textStyle="bold"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/conditionDisplayName"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="138dp"
+                android:layout_height="match_parent"
+                android:text="Buying Format"
+                android:textStyle="bold"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/listingType"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,74 @@
+body{
+margin : 0px;}
+body li{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 14px;
+font-weight: bold;
+}
+body li a{
+text-decoration: none;
+color : #252F33;}
+ul {
+    list-style-type: none;
+position: absolute;
+top: 116px;
+margin: 0px;
+}
+
+li {
+   display: inline-flex;
+width: 112px;
+}
+
+.header h2{
+position: absolute;
+margin: 20px;
+left: 11px;
+font-family: Georgia, serif;
+font-size: 32px;
+font-weight: bolder;
+color : #252F33;
+}
+.body-section{
+background-color: rgb(130, 151, 124);
+width: 680px;
+height: inherit;
+min-height: 496PX;
+padding-top: 1px;
+}
+
+.body-section .sections p{
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold; !IMPORTANT
+font-size: 27px;
+} 
+
+.body-section p{
+margin : 0px;
+margin-top: 12px;
+margin-bottom: 12px;
+margin-left : 22px;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 13px;
+}
+.body-section .body-header{
+color: rgb(44, 73, 105);
+
+
+}
+.body-header p{
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+font-size: 27px;
+} 
+
+
+.sections{
+height : 300px;
+}
+
+
+.boundary{
+border-bottom: 1px dotted;
+
+}

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Ebay Search </title>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<style>
+.checkbox-inline{
+	margin-right: 10px;
+}
+.checkbox-inline+.checkbox-inline{
+	margin-left: 0px;
+}
+.tab-pane ul{
+	padding: 0px;
+	list-style: outside none none;
+}
+.glyphicon-ok{
+	color:green;
+}
+.glyphicon-remove{
+	color:red;
+}
+.col-md-offset-5 {
+    margin-left: 49.667%;
+}
+
+/* #### Mobile Phones Portrait #### */
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+  /* some CSS here */
+  .alignclass {
+text-align : left;
+  }
+}
+/* #### iPhone 4+ Portrait or Landscape #### */
+@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
+  /* some CSS here */
+  .alignclass {
+  text-align : left;
+}
+}
+/* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px){
+  /* some CSS here */
+  .alignclass {
+  text-align : left;
+}
+}
+
+/* #### Desktops #### */
+@media screen and (min-width: 1024px){
+  /* some CSS here */
+  .alignclass {
+  text-align : right;
+}
+}
+.pagination{
+	margin: 20px 18px !important;
+}
+/*li span{
+	  float: left;
+  width: 163px !important;
+}*/
+</style>
+
+
+  <!-- Javascript includes -->
+  
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+<script>
+/* function to clear all input fields to their default values*/
+function clear_fields(currentForm){
+var elements = currentForm.getElementsByTagName("input");
+for (var i=0; i < elements.length; i++) {
+  if (elements[i].type == "text") {
+    elements[i].value = "";
+  }
+  if (elements[i].type == "checkbox") {
+    elements[i].checked = false;
+  }
+ 
+}
+var selectElements = document.getElementsByTagName("select");
+for (var i=0; i < selectElements.length; i++) {
+  selectElements[i].selectedIndex=0;
+  }
+
+}
+
+
+
+
+
+
+</script>
+
+  </head>
+<body>
+ <script>
+
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "http://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+  
+  </script>
+
+<div class="container-fluid">
+<form id="searchform" >
+<div class="row">
+<span><img src="http://cs-server.usc.edu:45678/hw/hw8/ebay.jpg" class="img-responsive" alt="Responsive image" style="float:left" width="150px"/></span>
+  <span>
+  &nbsp;<h1 class="bannertitle" style="margin-top:-13px"><b>Shopping</b></h1></span>
+</div>
+<div class="row">
+  <div class="form-group ">
+    <div class="col-md-2 alignclass" style="max-width: 154px;"> <label for="keyword">Key words:<font color=red>*</font></label></div>
+    <div class="col-md-6"><input type="text" class="form-control" id="keyword" name="Keywords" placeholder="Enter Keyword"></div>
+  </div>
+</div>
+<br/>
+
+  <div class="row">
+    <div class=" form-group">
+      <div class="col-md-2 alignclass" style="max-width: 154px;"><label for="pricerange">Price range:</label></div>
+      <div class=" col-md-3"><input type="text" class="form-control" name="MinPrice" id="MinPrice" placeholder="From ($)"></div>&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-3"><input type="text" class="form-control" name="MaxPrice" placeholder="To ($)"></div>
+   </div>
+  </div>
+<br/>
+  <div class="row">
+    <div class=" form-group">
+      <div class="col-md-2 alignclass" style="max-width: 154px;"><label for="condtion">Condition:</label></div>
+      <div class="form-inline col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" name="NewItem"  value="1000"> New</label>
+        <label class="checkbox-inline"><input type="checkbox" name="Used"  value="3000"> Used</label>
+        <label class="checkbox-inline"><input type="checkbox" name="VeryGood"  value="4000"> Very Good</label>
+        <label class="checkbox-inline"><input type="checkbox" name="Good"  value="5000"> Good</label>
+        <label class="checkbox-inline"><input type="checkbox" name="Acceptable"  value="6000"> Acceptable</label>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class=" form-group">
+      <div class="col-md-2 alignclass" style="max-width: 154px;"><label for="buyingformat">Buying formats:</label></div>
+      <div class="form-inline col-md-4">
+        <label class="checkbox-inline"><input type="checkbox" name="FixedPrice" value="FixedPrice">Buy It Now</label>
+        <label class="checkbox-inline"><input type="checkbox" name="Auction"  value="Auction"> Auction</label>
+        <label class="checkbox-inline"><input type="checkbox" name="Classified"  value="Classified"> Classified Ads</label>
+      </div>
+    </div>
+  </div>
+<br/>
+  <div class="row">
+    <div class=" form-group">
+      <div class="col-md-2 alignclass" style="max-width: 154px;"><label for="seller">Seller:</label></div>
+      <div class="form-inline col-md-4">
+        <label class="checkbox-inline"><input type="checkbox" name="ReturnsAcceptedOnly">Return Accepted</label>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class=" form-group">
+      <div class="col-md-2 alignclass" style="max-width: 154px;"><label for="shipping">Shipping:</label></div>
+      <div class="form-inline col-md-6">
+        <label class="checkbox-inline"><input type="checkbox" name="FreeShippingOnly"> Free Shipping</label>
+        <label class="checkbox-inline"><input type="checkbox" name="ExpeditedShippingType" >Expedited shipping</label>
+      </div>
+      </div>
+      <div class=" form-group">
+      <div class="col-md-6">
+        <input type="text" class="form-control" name="MaxHandlingTime" placeholder="Max handling time (days)">
+      </div>
+     </div>
+  </div>
+  <br/>
+  <div class="row">
+  <div class="col-md-2 alignclass" style="max-width: 154px;"><label for="sorting">Sort by:</label></div>
+   <div class="col-md-6">
+    <select class="form-control" name="sortOrder">
+     <option value="BestMatch">Best Match</option>
+     <option value="CurrentPriceHighest">Price: highest first</option>
+     <option value="PricePlusShippingHighest">Price + Shipping: highest first</option>
+     <option value="PricePlusShippingLowest">Price + Shipping: lowest first</option>
+    </select>
+  </div>
+ </div>
+ <br/>
+ <div class="row">
+  <div class="col-md-2 alignclass" style="max-width: 154px;"><label for="EntriesPerPage">Results Per Page:</label></div>
+   <div class="col-md-6">
+    <select class="form-control" name="EntriesPerPage">
+     <option value="5">5</option>
+     <option value="10">10</option>
+    </select>
+  </div>
+ </div>
+ <br/>
+ <div class="row">
+  <div class="col-md-2 col-md-offset-5"><span>
+  <button class="btn btn-default" type="button" onclick="clear_fields(this.form);">Clear</button>
+ <button class="btn btn-primary" type="submit" >Search</button></span></div>
+ </div>
+ </form>
+<div id="results">
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div id="modal-body">
+        <div class="container-fluid">
+            <div class="row" >
+            <div id="modal-body-content" ></div>
+              </div>
+      </div></div>
+      <div id="modal-footer"></div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<script>
+// Set jQuery.validate settings for bootstrap integration
+jQuery.validator.setDefaults({
+    highlight: function(element) {
+        jQuery(element).closest('.form-group').addClass('has-error');
+    },
+    unhighlight: function(element) {
+        jQuery(element).closest('.form-group').removeClass('has-error');
+    },
+    errorElement: 'span',
+    errorClass: 'control-label',
+    errorPlacement: function(error, element) {
+        if(element.parent('.input-group').length) {
+            error.insertAfter(element.parent());
+        } else {
+            error.insertAfter(element);
+        }
+    }
+});
+
+//Add default validation for Max field to be greator than Min field
+$.validator.addMethod('greatorThan', function (value, element, param) {
+    return this.optional(element) || value >= $(param).val();
+}, 'Invalid value');
+
+$( "#searchform" ).validate({
+  rules: {
+    Keywords: "required",
+    MinPrice:{
+      number:true,
+  		min:0},
+    
+    MaxPrice: {
+      number:true,
+ 	 greatorThan:"#MinPrice",
+ 	 min:0},
+ 	 MaxHandlingTime:{
+ 	 	digits:true,
+ 	 	min:1
+ 	 }
+    },
+  messages: {
+    keyword: "Please enter a key word",
+    MinPrice: {
+      
+      number: "Price  should  be  a valid number",
+      min:"Minimum	price	cannot	be	below	0"
+    },
+    MaxPrice: {
+      
+      number: "Price  should  be  a valid number",
+      greatorThan:"Maximum price cannot be less than minimum price or below zero",
+      min:"Maximum price cannot be less than minimum price or below zero"
+
+    },
+    MaxHandlingTime: {
+    	digits: "Max handling time should be a valid digit",
+    	min:"Max handling time should be greater than or equal to 1"
+    }
+  },	
+  
+					});
+
+	function create_search_table(result){
+		console.log(result);
+		if(result.ack=="No results found"){
+			document.getElementById("results").innerHTML = "<h4>No results found<h4>";
+		}
+		else{
+		var pageNumber = result.pageNumber;
+		var numberofpages = Math.ceil(result.resultCount/result.itemCount);
+		numberofpages = numberofpages<=0?1:numberofpages;
+		var actualnumberofitemsperpage = (result.itemCount < result.resultCount)?result.itemCount:result.resultCount;
+		
+		
+		var numberofitemslastpage = result.resultCount-((pageNumber-1)*result.itemCount);
+		numberofitemslastpage = (numberofitemslastpage<1)?actualnumberofitemsperpage:numberofitemslastpage;
+		var firstItemnumber = (pageNumber*result.itemCount)-(result.itemCount-1);
+		var lastItemnumber = (firstItemnumber+(result.itemCount-1) < result.resultCount)?firstItemnumber+(result.itemCount-1):result.resultCount;
+		
+		console.log(numberofpages);
+  		var html = [];
+  		html.push('<div class="row"><h3>'+firstItemnumber+'-'+lastItemnumber+' items out of '+result.resultCount+'</h3></div>');
+  		html.push('<div class="row">');
+  		var i =0;
+  		while((i<result.itemCount && i<result.resultCount && i<numberofitemslastpage) ) {
+  		var itemnum = "item"+i;
+  	
+    	var item     = result["item"+i];
+    	console.log(item);
+    	var title    = item.basicinfo.title;
+    	var pic      = item.basicinfo.galleryURL;
+    	var viewItemURL = item.basicinfo.viewItemURL;
+    	var pictureURLSuperSize = item.basicinfo.pictureURLSuperSize;
+  		var convertedCurrentPrice = item.basicinfo.convertedCurrentPrice;
+  		var shippingServiceCost = item.basicinfo.shippingServiceCost;
+  		var conditionDisplayName = item.basicinfo.conditionDisplayName;
+  		var listingType = item.basicinfo.listingType;
+  		var location = item.basicinfo.location;
+  		var categoryName = item.basicinfo.categoryName;
+  		var topRatedListing =item.basicinfo.topRatedListing;
+
+  		//SELLER INFO
+	  	var sellerUserName = item.sellerInfo.sellerUserName;
+	  	var feedbackScore = item.sellerInfo.feedbackScore;
+	  	var positiveFeedbackPercent = item.sellerInfo.positiveFeedbackPercent;
+	  	var feedbackRatingStar = item.sellerInfo.feedbackRatingStar;
+	  	var topRatedSeller = item.sellerInfo.topRatedSeller;
+	  	var sellerStoreName = item.sellerInfo.sellerStoreName;
+	  	var sellerStoreURL = (item.sellerInfo.sellerStoreURL != undefined && item.sellerInfo.sellerStoreURL != '')?item.sellerInfo.sellerStoreURL:"";
+
+
+	  	//SHIPPING INFO
+	  	var shippingType = item.shippingInfo.shippingType;
+	  	var shipToLocations = item.shippingInfo.shipToLocations;
+	  	var expeditedShipping = item.shippingInfo.expeditedShipping;
+	  	var oneDayShippingAvailable = item.shippingInfo.oneDayShippingAvailable;
+	  	var returnsAccepted = item.shippingInfo.returnsAccepted;
+	  	var handlingTime = item.shippingInfo.handlingTime;
+
+        var freeshipping = (shippingServiceCost== undefined || shippingServiceCost==''|| shippingServiceCost== '0.0')?'(FREE Shipping)':'(+$'+shippingServiceCost+ ' for shipping)';
+        var storeAvailable = (sellerStoreName != undefined && sellerStoreName != '')?sellerStoreName:'N/A';
+    	var topratedjpg  = (topRatedSeller != undefined && topRatedSeller == 'true')?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove';
+    	var expeditedShippingjpg  = (expeditedShipping != undefined && expeditedShipping == 'true')?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove';
+    	var oneDayShippingjpg  = (oneDayShippingAvailable != undefined && oneDayShippingAvailable == 'true')?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove';
+    	var returnsAcceptedjpg  = (returnsAccepted != undefined && returnsAccepted == 'true')?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove';
+    	var fbArr = [title,viewItemURL,convertedCurrentPrice,freeshipping,location]
+     	 var html_text = '<div class="media col-md-8">';
+     	 html_text    += '<div class="media-left" data-toggle="modal" data-target="#myModal" data-img="'+pictureURLSuperSize+'" data-title="'+title+'"><img src="' + pic + '" border="0" class="media-object" style="max-width: 70px;"></div>';
+     	 html_text 	  += '<div class="media-body"><a class="anchorjs-link" href="'+viewItemURL+'"><h4 class="media-heading" id="media-heading">'+title+'</h4></a>';
+     	 html_text	  += '<b>Price:$'+convertedCurrentPrice+'</b><span> '+freeshipping+'</span>&nbsp;&nbsp;&nbsp;<i> Location:  '+location+'</i>';
+     	 if(topRatedListing=='true')
+     	 	html_text += '<img src="http://cs-server.usc.edu:45678/hw/hw8/itemTopRated.jpg" width="40px"/>';
+     	 html_text 	  += '&nbsp;&nbsp;<a class="" data-toggle="collapse" href="#'+itemnum+'" aria-expanded="true" aria-controls="'+itemnum+'">View Details</a>&nbsp;&nbsp;<a onclick="show_post(\''+encodeURIComponent(title.replace(/'/g, "*quote*"))+'\',\''+encodeURIComponent(viewItemURL.replace(/'/g, "*quote*"))+'\',\''+encodeURIComponent(convertedCurrentPrice.replace(/'/g, "*quote*"))+'\',\''+encodeURIComponent(freeshipping.replace(/'/g, "*quote*"))+'\',\''+encodeURIComponent(location.replace(/'/g, "*quote*"))+'\',\''+encodeURI(pic.replace(/'/g, "*quote*"))+'\')"><img src="http://cs-server.usc.edu:45678/hw/hw8/fb.png" width="20px"/></a>';
+     	 html_text 	  += '<BR/><BR/><BR/><div class="collapse" id="'+itemnum+'">';
+     	 html_text    += '<ul class="nav nav-tabs " role="tablist">';
+    	 html_text    += '<li role="presentation" class="active"><a href="#basic'+i+'" aria-controls="basic'+i+'" role="tab" data-toggle="tab">Basic Info</a></li>';
+    	 html_text    += '<li role="presentation"><a href="#seller'+i+'" aria-controls="seller'+i+'" role="tab" data-toggle="tab">Seller Info</a></li>';
+    	 html_text    += '<li role="presentation"><a href="#shipping'+i+'" aria-controls="shipping'+i+'" role="tab" data-toggle="tab">Shipping Info</a></li>';
+  		 html_text    += '</ul>';
+  		 html_text	  += '<div class="tab-content">';
+    	html_text	  += '<div role="tabpanel" class="tab-pane active" id="basic'+i+'"><ul style="display:table"><li style="display:table-row"><span style="display:table-cell"><b>Category Name:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell">'+categoryName+'</span></li><li style="display:table-row"><span style="display:table-cell"><b>Condition:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell">'+conditionDisplayName+'</span></li><li style="display:table-row"><span style="display:table-cell"><b>Buying Format:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell">'+listingType+'</span></li></ul></div>';
+    	html_text	  += '<div role="tabpanel" class="tab-pane" id="seller'+i+'" ><ul style="display:table" ><li style="display:table-row"><span style="display:table-cell"><b>User Name:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell">'+sellerUserName+'</span></li><li style="display:table-row"><span style="display:table-cell"><b>Feedback Score:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell">'+feedbackScore+'</span></li><li style="display:table-row"><span style="display:table-cell"><b>Positive Feedback:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell">'+positiveFeedbackPercent+'%</span></li><li style="display:table-row"><span style="display:table-cell"><b>Feedback Rating:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell">'+feedbackRatingStar+'</span></li><li style="display:table-row"><span style="display:table-cell"><b>Top Rated:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell"class="'+topratedjpg+'"></span></li><li style="display:table-row"><span style="display:table-cell"><b>Store:</b></span>&nbsp;&nbsp;&nbsp;&nbsp';
+    	if(sellerStoreURL != "")
+    		html_text 	 += '<span style="display:table-cell"><a href="'+sellerStoreURL+'" target="_blank">'+storeAvailable+'</a></span>';
+    	else
+    		html_text 	 += "<span style='display:table-cell'>"+storeAvailable+"</span>";
+    	html_text    += '</li></ul></div>';
+    	html_text	  += '<div role="tabpanel" class="tab-pane" id="shipping'+i+'"><ul style="display:table"><li style="display:table-row"><span style="display:table-cell"><b>Shipping Type:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell">'+shippingType+'</span></li><li style="display:table-row"><span style="display:table-cell"><b>Handling Time:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell">'+handlingTime +' day(s)</span></li><li style="display:table-row"><span style="display:table-cell"><b>Shipping Locations:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell">'+shipToLocations+'</span></li><li style="display:table-row"><span style="display:table-cell"><b>Expedited Shipping:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell" class="'+expeditedShippingjpg+'"></span></li><li style="display:table-row"><span style="display:table-cell"><b>One Day Shipping:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell" class="'+oneDayShippingjpg+'"></span></li><li style="display:table-row"><span style="display:table-cell"><b>Returns Accepted:</b></span>&nbsp;&nbsp;&nbsp;&nbsp<span style="display:table-cell" class="'+returnsAcceptedjpg+'"></span></li></ul></div>';
+  		html_text	  += '</div>';
+     	 html_text    += '</div></div>';
+     	 html_text 	  += '</div>';
+
+
+
+
+     	 html.push(html_text);
+    i++;
+  }
+  html.push('</div><div class="row">');
+  //PAGINATION
+  var backarrowclass = (pageNumber==1)?"disabled":"";
+  var backarrowvalue = pageNumber - 1;
+  var firstpagenumber = ((Math.floor((pageNumber-1)/5))*5)== 0 ? 1:((Math.floor((pageNumber-1)/5))*5)+1;
+  html_text = '<nav><ul class="pagination"><li class = "'+backarrowclass+'"><a href="#" aria-label="Previous" onclick="paginationCalls('+backarrowvalue+','+numberofpages+')"><span aria-hidden="true">&laquo;</span></a></li>';
+  for(var j=firstpagenumber, k=0;j<=numberofpages&& j<=5*pageNumber && k<5;j++,k++){
+  	var classPagination = (j==pageNumber)?"active":"";
+    html_text += '<li class="'+classPagination+'"><a href="#" onclick="paginationCalls('+j+','+numberofpages+')">'+j+'</a></li>';
+    }
+    var forwardarrowclass = (pageNumber==numberofpages)?"disabled":"";
+
+    var forwardarrowvalue = parseInt(pageNumber) + 1;
+    html_text+=  '<li class="'+forwardarrowclass+'"><a href="#" aria-label="Next" onclick="paginationCalls('+forwardarrowvalue+','+numberofpages+')"><span aria-hidden="true">&raquo;</span></a></li></ul></nav></div>';
+  
+	html.push(html_text);
+
+  //PAGINATION
+
+  document.getElementById("results").innerHTML = html.join("");
+
+	}
+}
+
+	$('#myModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);
+  var imgurl = button.data('img');
+  var title = button.data('title'); 
+  var modal = $(this)
+  modal.find('.modal-title').text(title)
+  document.getElementById('modal-body-content').innerHTML = "<img src='"+imgurl+"' class='img-responsive center-block'/>";
+});
+
+$('#searchform').submit(function(e) {
+	 e.preventDefault();
+if($("#searchform").valid()) {
+ 
+                       $.ajax({
+					    //url:'http://uscwebtech2015-env.elasticbeanstalk.com/Search.php?pageNumber=1',
+						url:'Search.php?pageNumber=1',
+						data: $('#searchform').serialize(),
+						type:'GET',
+						success:function(output){
+							try {
+              				jsonObject = JSON.parse(output);
+              				create_search_table(jsonObject);
+            				} catch(e){
+               				console.error("Parse error:", e);
+               				document.getElementById("results").innerHTML = "<h4>No results found<h4>";
+              				 
+            }
+								},
+						error:function(){
+							document.getElementById("results").innerHTML = "<h4>No results found<h4>";
+								}
+							});
+						}
+
+					});
+
+
+
+function paginationCalls(pageNumber,maxpages){
+	if(!(pageNumber<1) && !(pageNumber>maxpages)){
+	$.ajax({
+						url:'Search.php?pageNumber='+pageNumber,
+						//url:'http://uscwebtech2015-env.elasticbeanstalk.com/Search.php?pageNumber='+pageNumber,
+						data: $('#searchform').serialize(),
+						type:'GET',
+						success:function(output){
+							try {
+              				jsonObject = JSON.parse(output);
+              				create_search_table(jsonObject);
+            				} catch(e){
+               				console.error("Parse error:", e);
+               				document.getElementById("results").innerHTML = "<h4>No results found<h4>";
+              				 
+            }
+								},
+						error:function(){
+							document.getElementById("results").innerHTML = "<h4>No results found<h4>";
+								}
+							});	
+	}
+}
+
+
+
+</script>
+  </body>
+ <script>
+ function show_post(title,viewItemURL,convertedCurrentPrice,freeshipping,location,pic){
+  title = (decodeURIComponent(title)).replace("*quote*",'\'');
+  viewItemURL = (decodeURIComponent(viewItemURL)).replace("*quote*",'\'');
+  convertedCurrentPrice = (decodeURIComponent(convertedCurrentPrice)).replace("*quote*",'\'');
+  freeshipping = (decodeURIComponent(freeshipping)).replace("*quote*",'\'');
+  location = (decodeURIComponent(location)).replace("*quote*",'\'');
+  pic = (decodeURIComponent(pic)).replace("*quote*",'\'');
+
+  subdesc = "Price: $"+convertedCurrentPrice+""+freeshipping+", Location : "+location;
+
+    FB.init({
+      appId      : '866026150138549',
+      xfbml      : true,
+      cookie	 : true,
+      version    : 'v2.3'
+    });
+    
+        FB.ui({
+     	 method: 'feed',
+         name: title,
+         link: viewItemURL,
+         picture: pic,
+         caption: 'Search Information from eBay.com',
+         description: subdesc,
+         message: 'Facebook Dialogs are easy!'
+       },
+       function(response) {
+         if (response && response.post_id && !response.error_code) {
+           alert('Posted successfully');
+         } else {
+           alert('Not posted');
+         }
+    });
+  
+}
+ </script>
+</html>

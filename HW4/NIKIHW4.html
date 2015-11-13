@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Company Stocks List</title>
+   <style>
+      #companylist{
+        width: 400px;
+        margin-left: 40%;
+      }
+      body p{
+        font-size: 17px;
+      }
+	 
+    </style>
+	<script type="text/javascript">
+	
+      var xmlDoc;
+      var error = false;
+      function loadXML(companyform) {
+        var url = companyform.URL.value;
+        if(url == ""){
+          newWindow = window.alert("Please enter the URL for the Company List File !!!");
+        }
+        else{
+          if (window.XMLHttpRequest)
+          {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+          }
+          else
+          {// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+          }
+          xmlhttp.open("GET",url,false);
+          //open, send, responseXML are
+          xmlhttp.send();
+          //properties of XMLHTTPRequest
+          xmlDoc=xmlhttp.responseXML;
+          
+          if (window.ActiveXObject) //if IE, simply execute script (due to async prop).
+          {
+            
+            generateHTML(xmlDoc);
+            newWindow = window.open("", "Company Stocks","height=400,width=700, scrollbars=yes");
+            newWindow.document.write(html_text);
+            
+            newWindow.document.close();
+          }
+          else //else if FF, execute script once XML object has loaded
+          {
+            //Check for INVALID XML cases 
+			if(xmlDoc == null){
+			 errStr="XML File does not exist!!! ";
+              newWindow = window.alert(errStr);
+			}
+			else{
+            if (xmlDoc.documentElement.nodeName=="parsererror")
+            {
+              errStr=xmlDoc.documentElement.childNodes[0].nodeValue;
+              errStr="Error in XML File ";
+              newWindow = window.alert(errStr);
+            }
+            else{
+              xmlDoc.onload=generateHTML(xmlDoc);
+              //Check for No Companies in the file
+              if(error == true){
+                newWindow = window.alert(error_stmt);
+              }
+              else{
+                newWindow = window.open("", "Company Stocks","height=400,width=700,scrollbars=yes");
+                newWindow.document.write(html_append);
+                
+                newWindow.document.close();
+              }
+            }
+			}
+          }
+          
+        }
+   	 }
+      
+      function generateHTML(xmlDoc)
+      {        
+        error = false;
+        var Symbol = Name = LastSale = Sector = Industry = HomePage = Logo = "N.A.";
+        html_append=('<html><head><title>Company Stocks</title></head><style> img{height: 78px; width: 115px;}</style><body>');
+        html_append+=("<table border='2'>");        
+        html_append+=("<tbody>");
+        html_append+=("<tr>");        
+        rowList=xmlDoc.getElementsByTagName("Row");
+        if(rowList.length > 1){
+          headingList = rowList.item(0).childNodes;
+          for(var i = 0;i<headingList.length;i++){
+            heading=headingList.item(i).nodeName;            
+            if(heading == "Data" && headingList.item(i).nodeType == 1){
+              if(headingList.item(i).firstChild != null){
+                heading_text = headingList.item(i).firstChild.nodeValue;
+              }
+              else{
+                heading_text = "N.A.";
+              }
+              html_append+=('<th>'+heading_text+'</th>');              
+            }
+          }
+          html_append+=('</tr>');   
+          for(var j=1;j<rowList.length;j++){
+            html_append+=('<tr>');
+            var rowElems = rowList[j].childNodes;
+            //alert(rowList[j].nodeName);
+            for(var i=0;i<rowElems.length;i++){
+              if (rowElems.item(i).nodeType==1 ){                
+                if(rowElems.item(i).firstChild != null){
+                  var rowElemValue = rowElems.item(i).firstChild.nodeValue;
+                }
+                else{
+                  var rowElemValue = "N.A.";
+                }
+                var rowElemName = rowElems[i].nodeName;
+                //alert(rowElemValue + rowElemName);
+                if(rowElemName == "Symbol"){
+                  Symbol = rowElemValue;
+                }
+                else if(rowElemName == "Name"){
+                  Name = rowElemValue;
+                }
+                else if(rowElemName == "LastSale"){
+                  LastSale = rowElemValue;
+                }
+                else if(rowElemName == "Sector"){
+                  Sector = rowElemValue;
+                }
+                else if(rowElemName == "Industry"){
+                  Industry = rowElemValue;
+                }
+                else if(rowElemName == "HomePage"){
+                  HomePage = rowElemValue;
+                }
+                else if(rowElemName == "Logo"){
+                  Logo = rowElemValue;
+                }
+              }
+            }
+            html_append+=("<td>"+Symbol+"</td>"+"<td>"+Name+"</td>"+"<td>"+LastSale+"</td>"+"<td>"+Sector+"</td>"+"<td>"+Industry+"</td>"+"<td>");
+			 html_append+=("<a href='"+HomePage+"'>link to company</a></td>"+"<td><img src='"+Logo+"' /></td></tr>");
+                     
+          }
+          html_append+=("</tbody></table>");
+		   html_append+=("</bo");
+		  html_append+=("dy>");
+		   html_append+=("</html>");          
+        }
+        else{
+          error = true;
+          error_stmt = "No Companies Exist in the File!!!";
+        }
+      }
+        </script> 
+  </head>
+  <body>
+      <form name="companylist" method="GET" id="companylist">
+      <p>
+        <b>
+          Enter URL for Company List XML File
+        </b>
+      </p>
+      <div class="center">
+        <input type="text" name="URL" maxlength="300" size="20" style="margin-left: 19%;"/>
+        
+        <br/>
+        <br/>
+        <input type="button" name="submit" value="Submit Query" onClick="loadXML(this.form)" style="margin-left: 25%;" />
+      </div>
+    </form>  
+         <noscript>    
+       </body>	 
+
+  </html>
+
+    

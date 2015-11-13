@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Workbook>
+ <Worksheet>
+  <Table>
+   <Row>
+    <Data>Symbol</Data>
+    <Data>Name</Data>
+    <Data>LastSale</Data>
+    <Data>Sector</Data>
+    <Data>Industry</Data>
+    <Data>HomePage</Data>
+    <Data>Logo</Data>
+   </Row>
+   
+  </Table>
+ </Worksheet>
+</Workbook>

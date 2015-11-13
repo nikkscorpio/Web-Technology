@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">EBay Search</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="sort_by">
+        <item>Best Match</item>
+        <item>Price: highest first</item>
+        <item>Price + Shipping: highest first</item>
+        <item>Price + Shipping: lowest first</item>
+    </string-array>
+    <string name="title_activity_result">ResultActivity</string>
+    <string name="title_activity_resultlist">Resultlist</string>
+    <string name="title_activity_detailview">detailview</string>
+
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_activity_detailpage">detailpage</string>
+    <string name="facebook_app_id">406028719569381</string>
+</resources>

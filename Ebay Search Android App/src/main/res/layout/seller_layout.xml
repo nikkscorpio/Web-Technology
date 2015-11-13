@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="138dp"
+                android:layout_height="match_parent"
+                android:text="User Name"
+                android:textStyle="bold"
+                android:textIsSelectable="false" />
+
+            <TextView
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/sellerUserName"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="138dp"
+                android:layout_height="match_parent"
+                android:text="Feedback Score"
+                android:textStyle="bold"
+                android:textIsSelectable="false" />
+
+            <TextView
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/feedbackScore"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="138dp"
+                android:layout_height="match_parent"
+                android:text="Positive Feedback"
+                android:textStyle="bold"
+                android:textIsSelectable="false" />
+
+            <TextView
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/positiveFeedbackPercent"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="138dp"
+                android:layout_height="match_parent"
+                android:text="Feedback Rating"
+                android:textStyle="bold"
+                android:textIsSelectable="false" />
+
+            <TextView
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/feedbackRatingStar"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="138dp"
+                android:layout_height="match_parent"
+                android:text="Top Rated"
+                android:textStyle="bold"
+                android:textIsSelectable="false" />
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/topRatedSeller"
+                android:singleLine="true"
+                android:background="@drawable/ok" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="138dp"
+                android:layout_height="match_parent"
+                android:text="Store"
+                android:textStyle="bold"
+                android:textIsSelectable="false" />
+
+            <TextView
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/sellerStoreName"
+                android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+
